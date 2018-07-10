@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+import sys
+
+if __name__ == "__main__":
+  inname = sys.argv[1]
+  outname = sys.argv[2]
+
+  with open(inname) as infile:
+    with open(outname, "w") as outfile:
+      warnings = (l for l in infile if "WARNING" in l)
+      for l in warnings:
+        outfile.write(l)
+
+

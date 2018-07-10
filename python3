@@ -1,0 +1,65 @@
+[editor]
+line_wrapping=false
+line_break_column=72
+auto_continue_multiline=true
+
+[file_prefs]
+final_new_line=true
+ensure_convert_new_lines=false
+strip_trailing_spaces=false
+replace_tabs=false
+
+[indentation]
+indent_width=2
+indent_type=0
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=python3
+base_path=/home/bluefrog/projects/
+description=
+file_patterns=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=0
+FILE_NAME_0=224;Python;0;EUTF-8;0;1;0;%2Fhome%2Fbluefrog%2Fsample_code%2Fpython%2Fregular_expressions%2Flook_around_and_groups.py;0;2
+
+[VTE]
+last_dir=/home/bluefrog/cpp_uni/student
+
+[build-menu]
+NF_00_LB=_Make
+NF_00_CM=
+NF_00_WD=
+NF_01_LB=Make Custom _Target...
+NF_01_CM=
+NF_01_WD=
+NF_02_LB=Make _Object
+NF_02_CM=
+NF_02_WD=
+NF_03_LB=
+NF_03_CM=
+NF_03_WD=
+EX_00_LB=_Execute
+EX_00_CM=python3 "%f"
+EX_00_WD=
+NoneFT_00_LB=Compile
+NoneFT_00_CM=python3 -m py_compile "%f"
+NoneFT_00_WD=
+NoneFT_01_LB=Build
+NoneFT_01_CM=
+NoneFT_01_WD=
+NoneFT_02_LB=Lint
+NoneFT_02_CM=
+NoneFT_02_WD=
+filetypes=None;Python;
+PythonFT_00_LB=_Compile
+PythonFT_00_CM=python3 -m py_compile "%f"
+PythonFT_00_WD=

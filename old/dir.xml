@@ -1,0 +1,17 @@
+<all>
+  <topdir tdID="1" dName="./Database/APPS/" owner="APPS" dbLog="no" sOwner1="" dbLnk1="" sOwner2="" dbLnk2="" />
+  <topdir tdID="2" dName="./Database/XXRBS/" owner="XXRBS" dbLog="no" sOwner1="" dbLnk1="" sOwner2="" dbLnk2="" />
+  <topdir tdID="2" dName="./Database/XXRBS_RELEASE/" owner="XXRBS_RELEASE" dbLog="yes" sOwner1="" dbLnk1="" sOwner2="" dbLnk2="" />
+  <linuxdirs>
+    <dir tdID="1" dID="1" dName="./Database/APPS/DDL/Create/Tables" customOrder="no"></dir>
+    <dir tdID="1" dID="2" dName="./Database/APPS/DDL/Create/Synonyms" customOrder="no"></dir>
+    <dir tdID="2" dID="3" dName="./Database/XXRBS/DML/Insert" customOrder="yes">
+      <sqlfile fID="1" fName="ins_to_ref1.sql" />
+      <sqlfile fID="2" fName="ins_to_accounts_type.sql" />
+   </dir>
+    <dir tdID="1" dID="4" dName="./Database/APPS/DDL/Create/Views" customOrder="yes">
+      <sqlfile fID="1" fName="view_account.sql" />
+      <sqlfile fID="2" fName="view_customer.sql" />
+    </dir>
+  </linuxdirs>
+</all>
