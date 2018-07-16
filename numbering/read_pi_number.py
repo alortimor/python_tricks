@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-file_name='/home/bluefrog/sample_code/python/pi_number.dat'
+file_name='pi_number.dat'
 with open(file_name) as file_object:
   contents = file_object.read()
   print(contents.rstrip())
