@@ -21,3 +21,7 @@ discard_text, post_colon_text =title[:colon_position],title[colon_position+2:]
 
 print("discard_text is '{}', post_colon_text is '{}' = title[:colon_position],title[colon_position+2:]".format(discard_text, post_colon_text ))
 
+print("title[-1] is the last character: {} ".format(title[-1]))
+print("title[-2] is the next to last character: {} ".format(title[-2]))
+print("title[-6:] is the last six characters: {} ".format(title[-6:]))
+

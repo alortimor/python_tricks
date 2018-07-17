@@ -8,6 +8,8 @@ If the object fails to match the __dict__ attribute, it raises a TypeError excep
 
 What is printed output is based on the following return:
 return '{id:3s} : {location:19s} : {max_temp:3d} / {min_temp:3d} /  {precipitation:5.2f}'.format_map(vars(self))
+
+
 """
 
 class Summary:
@@ -19,6 +21,7 @@ class Summary:
           self.precipitation=precipitation
 
       def __str__(self):
+          # using format_map enables building of a dictionary object with the variables
           return '{id:3s} : {location:19s} : {max_temp:3d} / {min_temp:3d} /  {precipitation:5.2f}'.format_map(vars(self))
 
 s = Summary('IAD', 'Dulles Intl Airport', 13, 32, 0.4)
