@@ -18,8 +18,12 @@ print(__doc__)
 some_integer = 10
 some_string = "Hello World"
 
-# The mapping can be done manually by specifying the place holder name = variable name
+# The mapping between place holder and variable can be done manually by specifying the place holder name = variable name
 print("{some_integer!r} {some_string!r} ".format(some_integer=some_integer, some_string=some_string))
+
+# Place holder position numbers can also be used, instead of place holder names
+# in which case the mapping (place holder name = variable name) need not be specified
+print("{0!r} {1!r} ".format(some_integer, some_string))
 
 # 
 # Or, from Python 3.6 one can use f strings, where a variable can be placed within a quoted
