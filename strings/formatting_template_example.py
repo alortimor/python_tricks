@@ -7,9 +7,9 @@ Templates with substitution allow for rules to put data into a more complex form
 Detailed description of format rules are avaialble at : https://docs.python.org/3/library/string.html#string-formatting
 
 vars() method takes only a single (optional) parameter.
-It takes an object as a parameter which may be can a module, class, an instance, or any object having __dict__ attribute.
+It takes an object as a parameter which can be either a module, class, an instance, or any object having __dict__ attribute.
 
-The method returns the __dict__ attribute for a module, class, instance, or any other object if the it has a __dict__ attribute. 
+The method returns the __dict__ attribute for a module, class, instance, or any other object, providing it has a __dict__ attribute. 
 If the object fails to match the __dict__ attribute, it raises a TypeError exception.
 
 The  code example below prints output based on the following template:
