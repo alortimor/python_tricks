@@ -1,0 +1,150 @@
+1. Download Anaconda:
+
+2. Install Anaconda
+
+$ chmod +x Anaconda3-4.2.0-Linux-x86_64.sh
+$ . Anaconda3-4.2.0-Linux-x86_64.sh
+3. step 2 will install anaconda in ~/anaconda by default. 
+
+Now install jupyter
+
+$ cd ~/anaconda3/bin/
+$ sudo ./conda install jupyter
+Fetching package metadata .........
+Solving package specifications: .
+# All requested packages already installed.
+# packages in environment at ~/anaconda3:
+#
+jupyter                   1.0.0                    py35_3  
+
+
+4. Install matplotlib for testing purposes:
+
+$ sudo -H pip3 install matplotlib
+Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages
+
+
+5. Download Spark and install
+
+$ cd ~/Downloads/ 
+$ tar xzvf spark-2.1.0-bin-hadoop2.7.tgz 
+$ mv spark-2.1.0-bin-hadoop2.7/ spark 
+$ sudo mkdir -p /usr/local/bin/apache-spark
+$ sudo mv spark/ /usr/local/bin/apache-spark
+$ cd /usr/local/bin
+$ sudo chown -R $USER:$USER apache-spark
+6. Install the scala build tool
+
+$ echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 
+$ sudo apt-get update
+$ sudo apt-get install sbt
+
+
+7. Make sure Java 8 version is greater than 102, since Scala does not work with earlier point releases of Java 8. The scala web site, http://scala-lang.org/news/2.12.0), specifies::
+
+"Any Java 8 compliant runtime will do (but note that Oracle versions before 8u102 have a known issue that affects Scala)."
+It is the main reason I struggled for  over a week, since I had 8u092, once I upgraded Java it all worked fine!
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt update; sudo apt install oracle-java8-installer
+
+
+8. Configure Spark
+
+$ cp spark-env.sh.template spark-env.sh  
+$ vi spark-env.sh  # use whichever editor you're comfortable with
+# include the following lines below:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+SPARK_WORKER_MEMORY=4g
+SPARK_LOCAL_IP=localhost
+$ cd /etc
+$ sudo vi sysctl.conf
+# include the following 3 lines below:
+net.ipv6.conf.all.disable_ipv6 = 1  
+net.ipv6.conf.default.disable_ipv6 = 1  
+net.ipv6.conf.lo.disable_ipv6 = 1  
+
+
+9. Modify and/or add lines to .bashrc
+
+$ cd ~
+$ vi .bashrc
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export PATH=$PATH:$JAVA_HOME:$JAVA_HOME/bin  
+# added by Anaconda3 4.2.0 installer
+export PATH="${HOME}/anaconda3/bin:$PATH"
+export LD_LIBRARY_PATH=/usr/local/hadoop/lib/native/:$LD_LIBRARY_PATH
+export SBT_HOME=/usr/share/sbt-launcher-packaging/bin/sbt-launch.jar  
+export SPARK_HOME=/usr/local/bin/apache-spark
+export PYTHONPATH="${SPARK_HOME}/python/:${PYTHONPATH}"
+export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.4-src.zip:${PYTHONPATH}"
+export PYSPARK_PYTHON=/usr/bin/python3
+export PYSPARK_DRIVER_PYTHON=${HOME}/anaconda3/bin/jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
+export PYSPARK_SUBMIT_ARGS='--master local[*] pyspark-shell'
+export PATH=$PATH:$SBT_HOME:$SBT_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/sbin
+
+
+10. Test spark
+
+$ cd ~
+$ . ~/.bashrc
+$ cd $SPARK_HOME/bin
+$ ./spark-shell 
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+17/02/08 12:03:35 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 1.2.0
+17/02/08 12:03:35 WARN ObjectStore: Failed to get database default, returning NoSuchObjectException
+17/02/08 12:03:35 WARN ObjectStore: Failed to get database global_temp, returning NoSuchObjectException
+Spark context Web UI available at http://127.0.0.1:4040
+Spark context available as 'sc' (master = local[*], app id = local-1486555408590).
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.1.0
+      /_/
+         
+Using Scala version 2.11.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_121)
+Type in expressions to have them evaluated.
+Type :help for more information.
+scala>
+
+
+11. You will notice a few warning messages, but they do not seem to effect pyspark in jupyter
+
+Next, configure pyspark to work with jupyter
+
+$ cd ~
+$ mkdir -p  ~/.ipython/profile_default/startup
+$ mkdir -p ~/.ipython/kernels/pyspark
+$ cd ~/.ipython/kernels/pyspark
+$ cat > kernel.json <<EOF
+> {
+>  "display_name": "pySpark (Spark 2.1.0)",
+>  "language": "python",
+>  "argv": [
+>   "/usr/bin/python3",
+>   "-m",
+>   "ipykernel",
+>   "-f",
+>   "{connection_file}"
+>  ],
+>  "env": {
+>  }
+> }
+> EOF
+
+
+Should be able to run jupyter now from command line
+
+$ jupyter notebook
+This will bring up a browser session. You should be able to select new and then pick "pySpark 2.1.0" as a kernel option.
+
+Note, the spark context has to be created. You can simply copy and paste the 4th cell in the attached notebook, however, you cannot create multiple contexts in this way, so if you try and rerun the 4th cell pyspark shows an error.
+
+Test using the following notebook attached, which requires the text file (kjv.txt, also attached) , you should see a histogram below.
+
+

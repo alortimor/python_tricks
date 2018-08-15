@@ -34,7 +34,8 @@ print(f"The oldest model {oldest_model.model_name} was manufactured by {oldest_m
 was released on the {oldest_model.release_date}")
 
 
+print("\nNamed tuples have attributes and methods:\n \
+Attributes: _fields, _fields_defaults\n \
+Methods: _asdict, _replace, _name")
 
-
-
-
+print("For example latest_model._fields is {} ".format(latest_model._fields))
