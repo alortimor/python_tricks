@@ -144,7 +144,3 @@ $ jupyter notebook
 This will bring up a browser session. You should be able to select new and then pick "pySpark 2.1.0" as a kernel option.
 
 Note, the spark context has to be created. You can simply copy and paste the 4th cell in the attached notebook, however, you cannot create multiple contexts in this way, so if you try and rerun the 4th cell pyspark shows an error.
-
-Test using the following notebook attached, which requires the text file (kjv.txt, also attached) , you should see a histogram below.
-
-

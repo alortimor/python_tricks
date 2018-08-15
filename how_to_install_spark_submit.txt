@@ -1,0 +1,47 @@
+Running spark-submit with the configuration outlined in how_to_install_jupyter_pyspark.txt
+will always run jupyter in a notebook in a browser session, instead of running pyspark on the command line.
+
+To modify the behaviour so that spark-submit remains on the command line, make the following changes:
+
+$ which ${0} # verify shell and location, for inclusion as shebang
+/bin/bash
+$ cd $SPARK_HOME
+$ cat > pyspark_notebook << 'EOF'
+> #!/bin/bash
+> export PYSPARK_DRIVER_PYTHON=/home/bluefrog/anaconda3/bin/jupyter
+> export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
+> export PYSPARK_SUBMIT_ARGS='--master local[*] pyspark-shell'
+> exec pyspark
+> EOF
+$ chmod +x pyspark_notebook
+
+
+now remove the following 3 lines in the .bashrc file, which was included in step 9.
+
+export PYSPARK_DRIVER_PYTHON=/home/bluefrog/anaconda3/bin/jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS="notebook"
+export PYSPARK_SUBMIT_ARGS='--master local[*] pyspark-shell'
+
+
+You can now run spark-submit on the command line:
+
+$ spark-submit sparkSubmitDemo.py 
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+17/03/09 23:33:52 INFO SparkContext: Running Spark version 2.1.0
+...
+...
+...
+of: 733
+at: 99
+i: 639
+in: 464
+by: 147
+a: 582
+for: 277
+the: 1218
+me: 236
+you: 610
+on: 150
+...
+...
+$ 
