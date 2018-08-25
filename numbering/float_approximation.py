@@ -27,8 +27,12 @@ will involve a binary representation.
 The actual internal value for 8.066e+67 is:
 6737037547376141/2**53*2**226
 
+Note, whem importing multiple modules from a library, you can use () , e.g.
+from math import (sin, cos, tan, sqrt, log, frexp)
+
 """
-import fractions, math
+import fractions
+from math import (sin, cos, tan, sqrt, log, frexp)
 print(__doc__)
 
 sugar_cups = fractions.Fraction('2.5')
@@ -39,6 +43,6 @@ print("Using float - float(fractions.Fraction('2.5')*fractions.Fraction(5/8)): {
 
 print("\nOne can mix int and float values or int and decimal or int and fraction. One cannot however mix float with Fraction or Decimal.")
 print("\nYou can use math.frexp() to view internal details of a number such as the\n\
-mantissa and the exponent, for example math.frexp(8.066E+67) results in {}".format(math.frexp(8.066E+67)))
+mantissa and the exponent, for example math.frexp(8.066E+67) results in {}".format(frexp(8.066E+67)))
 
 
