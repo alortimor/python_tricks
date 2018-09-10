@@ -1,9 +1,10 @@
 1. Download Anaconda:
+https://www.anaconda.com/download/#linux
 
 2. Install Anaconda
 
 $ chmod +x Anaconda3-4.2.0-Linux-x86_64.sh
-$ . Anaconda3-4.2.0-Linux-x86_64.sh
+$ ./Anaconda3-4.2.0-Linux-x86_64.sh
 3. step 2 will install anaconda in ~/anaconda by default. 
 
 Now install jupyter
@@ -22,9 +23,13 @@ jupyter                   1.0.0                    py35_3
 
 $ sudo -H pip3 install matplotlib
 Requirement already satisfied: matplotlib in /usr/lib/python3/dist-packages
+or
+$ sudo ./conda install matpltlib
 
 
 5. Download Spark and install
+https://spark.apache.org/downloads.html
+
 
 $ cd ~/Downloads/ 
 $ tar xzvf spark-2.1.0-bin-hadoop2.7.tgz 
