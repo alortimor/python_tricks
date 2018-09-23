@@ -12,6 +12,8 @@ class Tuple_Counter:
   def create_tuple(self):
     return self.tpl
 
+  # Note, a dictionary key cannot be a list or set, since lists and sets are mutable, but
+  # a key can be a tuple, since a tuple is imutable
   @tuple_manager.set_tuple_entry
   def set_tuple_entry(self, **args):
     for key, vaue from args:
