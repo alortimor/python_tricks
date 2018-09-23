@@ -10,14 +10,12 @@ between 2 points, which is measured in radians.
 'lat' refers to Latitude and 'lon' longitude.
 Refer to https://en.wikipedia.org/wiki/Haversine_formula for more details.
 """
-print(__doc__)
 from math import radians , sin, cos, sqrt, asin
 from functools import partial
 
 MI = 3959
 NM = 3440
 KM = 6372
-
 
 # All parameters up until * can be specified by either position or keyword, whereas
 # R however has to be specified by keyword. * is used to separate the 2.
@@ -38,21 +36,22 @@ def nm_haversine(*args):
 
 mi_haversine = partial(haversine, R=MI)
 
-# nm_haversine = partial(haversine, R=NM)
-print("Haversine (Nautical miles) : {}".format(haversine(10,10,20,20, R=NM)))
-print("Haversine (Nautical miles): {}".format(nm_haversine(10,10,20,20)))
-print("Haversine (Miles): {}".format(mi_haversine(10,10,20,20)))
+if __name__ == "__main__":
+    print(__doc__)
+    # nm_haversine = partial(haversine, R=NM)
+    print("Haversine (Nautical miles) : {}".format(haversine(10,10,20,20, R=NM)))
+    print("Haversine (Nautical miles): {}".format(nm_haversine(10,10,20,20)))
+    print("Haversine (Miles): {}".format(mi_haversine(10,10,20,20)))
 
-print("\nThe benefit of using partial over wrapper functions is:\n\
-1. Less code\n\
-2. Partials can exist in the middle of more complex code, since there is no need for a 'def'\n\
-\n\
-However, one consideration is the positioning of *args,\n\
-which must be placed first in the parameter list\n\
-\n\
-An alternative method for defining a function object is to use a lambda, for example:\n\
-nm_haversine = lambda *args: haversine(*args, R=NM)")
-
-# nm_haversine redefined
-nm_haversine = lambda *args: haversine(*args, R=NM)
-print("Haversine (Nautical miles): {} ".format(nm_haversine(10,10,20,20)))
+    print("\nThe benefit of using partial over wrapper functions is:\n\
+    1. Less code\n\
+    2. Partials can exist in the middle of more complex code, since there is no need for a 'def'\n\
+    \n\
+    However, one consideration is the positioning of *args,\n\
+    which must be placed first in the parameter list\n\
+    \n\
+    An alternative method for defining a function object is to use a lambda, for example:\n\
+    nm_haversine = lambda *args: haversine(*args, R=NM)")
+    # nm_haversine redefined
+    nm_haversine = lambda *args: haversine(*args, R=NM)
+    print("Haversine (Nautical miles): {} ".format(nm_haversine(10,10,20,20)))
