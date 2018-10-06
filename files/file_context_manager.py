@@ -7,7 +7,7 @@ Resources are used unnecessarily . Using a context manager using the 'with' stru
 cleaning up and closing down of any open resources.
 
 some_text='some sample text'
-target_path = pathlib.Path('/home/bluefrog//sample_code/python/t.txt')
+target_path = pathlib.Path('/home/bluefrog/sample_code/python/t.txt')
 with target_path.open('w+', newline='\n') as target_file:
     writer = csv.writer(target_file)
     for t in some_text.split():
@@ -30,7 +30,7 @@ import csv
 import pathlib
 
 some_text='some sample text'
-target_path = pathlib.Path('/home/bluefrog//sample_code/python/t.txt')
+target_path = pathlib.Path('/home/bluefrog/sample_code/python/t.txt')
 with target_path.open('w+', newline='\n') as target_file:
     #writer = csv.writer(target_file)
 #    writer = writer(target_file)
