@@ -39,8 +39,21 @@ list_copy = stock_items.copy()
 print ("\nCopy of list using copy() : {} ".format(list_copy))
 
 # "del" can delete all elements in a list or part of a list with slicing, for example:
+# In addition, del can also remove an item at a specific index
 del list_copy[:2]
 print ("\nList after del[:2] : {} ".format(list_copy))
 
-# remove differs from del in that it performs a match of 
+# remove differs from del in that it performs a match, based on the parameter passed to the remove() function
+list_copy.remove(list_copy[0])
+print("First element removed : {} ".format(list_copy))
+
+# pop() can also be used to remove an item. pop() only takes an integer however, unlike remove()
+# Also, pop() returns the value of the element removed, whereas remove does not.
+
+# pop without any integer parameter removes the last item in the list
+item_removed = list_copy.pop()
+
+print("First element removed : {} ".format(list_copy))
+print ("Item removed : {} ".format(item_removed))
+
 
