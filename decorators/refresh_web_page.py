@@ -15,7 +15,7 @@ class WebPage:
 
 if __name__ == "__main__":
   import time
-  webpage = WebPage("http://ccphillips.net/")
+  webpage = WebPage("http://www.google.co.uk/")
   now = time.time()
   content1 = webpage.content
   t = time.time() - now 
