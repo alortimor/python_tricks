@@ -21,30 +21,29 @@ def get_weekday(date_str):
     return datetime.strptime(date_str.decode('ascii'), "%d-%m-%Y").date().weekday()
 
 def load_arrays(data_file, *col_tuple):
-    a1 = a2 = a3 = a4 = None
+    a1 = a2 = None
 
-  #  rec_type = np.dtype([('stock_code', 'S4'), ('cob_date', 'S10'), ('close_price', 'f4')])
     try:
-        a1, a2, a3, a4 = np.loadtxt(data_file, 
-                                dtype={'names': ('stock_code','cob_date','high_price','low_price'),
-                                       'formats': ('S4', 'S10', 'f4', 'f4')}, 
+        a1, a2 = np.loadtxt(data_file, 
+                                dtype={'names': ('stock_code','high_price'),
+                                       'formats': ('S4', 'f4')}, 
                                 converters={1: get_weekday}, delimiter=',',
-                                unpack=True)
+                                usecols=(0,2), unpack=True)
 
     except IOError as e:
         usage() # failed to open file
     except Exception as e: print(e)
 
-    return a1, a2, a3, a4
+    return a1, a2
 
 try:
     data_file = sample_data
-    s, d, h, l = load_arrays(data_file)
+    s,  h= load_arrays(data_file)
 except IndexError:
     usage()
 
 print("Stock code array:\n{}".format(s))
-print("\nClose of Business date array:\n{}".format(d))
+#print("\nClose of Business date array:\n{}".format(d))
 print("\nHigh price array:\n{}".format(h))
-print("\nLow price array:\n{}".format(l))
+#print("\nLow price array:\n{}".format(l))
 
