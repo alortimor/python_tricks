@@ -12,7 +12,7 @@ the following is an array of integers:
 the following is an array of float:
     [0,1, 55., 99]
 
-Tou can convert a Python list to a numpy array, for example:
+You can convert a Python list to a numpy array, for example:
     some_list = [0,1,2,3]
     some_list = np.array(some_list)
 
