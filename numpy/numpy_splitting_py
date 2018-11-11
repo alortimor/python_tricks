@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+
+"""
+Splitting an array can be done horizontally (row wise) or vertically (column wise) or depth wise into separate arrays, 
+for example
+
+a = np.arange(9).reshape(3,3)
+a is
+ [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8]
+ ]
+np.hsplit(a,3) will result in 3 separate arrays, as:
+     Array 0
+      [
+       [0],
+       [3],
+       [6]
+      ]
+
+     Array 1
+      [
+       [1],
+       [4],
+       [7]
+      ]
+
+     Array 2
+      [
+       [2],
+       [5],
+       [8]
+      ]
+The same can be achieved with np.split(a,3,axis=0)
+
+np.vsplit(a.3)will result in:
+    Array 0 [[0, 1, 2]] Array 1 [[3, 4, 5]] Array 2 [[6,7,8]]
+The same can be achieved with np.split(a,3,axis=1) # Note, the difference in the axis value 
+"""
+
+print(__doc__)
+import  numpy as np
+a = np.arange(9).reshape(3,3)
+print("\nHorizontal split :\n{}".format(np.hsplit(a,3)))
+c = np.arange(27).reshape(3,3,3)
+print("\nDepth wise split for a 3 dimensional array\n{}\nwhen split depth wise outputs as:\n{}".format(c, np.dsplit(c,3)))
