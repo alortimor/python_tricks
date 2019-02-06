@@ -8,7 +8,7 @@ The data is stored in a homogenous and contiguous block of memory, at a particul
 Python data structures, such as a list, on the other hand are non-contiguous across system memory.
 This is the main difference between numpy arrays and traditional Python data structures.
 This difference makes numpy arrays highly efficient compared to Python data structures, since processing
-a contiguous block of memory improves looping throughput and lower level caching for optimisations.
+a contiguous block of memory improves looping throughput and opportunities for lower level caching optimisation.
 
 Certain operations and actions however can lead to the said blocks of memory being copied, which can lead
 to inefficiencies and less than ideal outcomes.
@@ -22,7 +22,8 @@ preferable if the original is required to be kept as is.
 
 Two useful ways of determining array equivalence, in regard to memory allocation, is
 to use the numpy __array_interface__ and numpy's array base object, the latter is the 
-bas object if memory is from some other object.
+base object if memory is from some other object.
+Note, if the memory is from the same object then base is None.
 
   The following is quoted from https://docs.scipy.org/doc/numpy-1.15.1/reference/arrays.interface.html
   'array-like Python objects to re-use each other’s data buffers intelligently whenever possible.
@@ -52,8 +53,7 @@ bas object if memory is from some other object.
                                     x: pointer to the 1st element 
                                     y: True (default) or False depending whether data is read-only or not.
 
-Note, if the memory is from the same object then base is None.
-Reshaping a 2D array generally does not create a copy in mmeory, unless the array is transposed, i.e.
+Reshaping a 2D array generally does not create a copy in memory, unless the array is transposed, i.e.
 a.reshape() vs a.T.reshape()
 """
 
@@ -82,7 +82,7 @@ if __name__ == "__main__":
     print("\nArray address matches: {}".format(array_base_address(a) == array_base_address(a.copy()) ))
     print("Array address matches: {}".format(array_base_address(a) == array_base_address(a[:1]) ))
 
-    print("\nImplicit array copies can occur for certain calculations (e.g. a * 2), when assigned to another array,can cause a copy to made")
+    print("\nImplicit array copies can occur for certain calculations (e.g. a * 2), when assigned to another array,can cause a copy to be made")
 
     arr1 = np.array([2,6,1,45])
     b = arr1 * 2
@@ -100,15 +100,10 @@ if __name__ == "__main__":
     a = np.ones( (20,20))
     print("\nGiven the following 2D array [20,20] \n{}".format(a))
     b = a.reshape(5,4,20)
-    print("\n2D arra [20,20] reshaped t 3D [5,4,20]\n{}".format(b))
+    print("\n2D array [20,20] reshaped to 3D [5,4,20]\n{}".format(b))
     print("\nBase adresses match despite reshaping: {}".format(array_base_address(a) == array_base_address(b)))
 
     x = a.T.reshape(1, -1)
-    print("\nIn some cases however, base addresses do not match when transposing & reshaping, i.e. a.T.reshape(): {} ".format(array_base_address(a) == array_base_address(x)))
+    print("\nIn some cases however, base addresses do not match, (copy has occurred),\nwhen transposing & reshaping (not always), i.e. a.T.reshape(): {} ".format(array_base_address(a) == array_base_address(x)))
     print("\n{}".format(x))
     
-
-     
-
-
-

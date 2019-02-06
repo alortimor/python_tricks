@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
 Numpy arrays have several attributes and methods that can be used to obtain information and effect change.
-Numpy arrays are generally created with np.array. 'zeros', 'ones' & 'empty' are convenient methods
+Numpy arrays are generally created with np.array. 
+'zeros', 'ones' & 'empty' are convenient methods
 to initialise numpy arrays.
 You can also use np.ndarray, but it is not recommended (as per ndarray docstring)
 
-The following is a short summry of attributes:
+The following is a short summary of attributes:
     array.ndim = number of dimensions
     array.size = number of elements
     array.dtype = data type of the array

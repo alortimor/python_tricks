@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Numpy arrays can be interated over with an interator object, which is assigned from the flat method: 
+Numpy arrays can be iterated over with an iterator object, which is assigned from the flat method: 
 	a = np.arange(1,9).reshape(2,4)
 	[
 	 [1,2,3,4],
@@ -20,7 +20,7 @@ Numpy arrays can be interated over with an interator object, which is assigned f
 	a = np.arange(1,3)
 	[1,2,3]
 	
-	a.flat = 1 results in 
+	a.flat = 1 # results in 
 	[1,1,1]
 
 """

@@ -3,7 +3,7 @@
 file: load_array_with_genfromtxt.py
 The example below loads data into arrays using genfromtxt().
 genfromtxt() is more flexible, but significantly slower than loadtxt(), since it performs a loop over each line twice, once to split each line by the specified delimiter and then a second loop converts each split string to its specified data type (specified by dtype).
-loadtxt() on the other had performs the loop once. 
+loadtxt() on the other performs the loop once. 
 The sample data file for the script below is data2.csv
 """
 print(__doc__)
