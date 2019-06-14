@@ -27,3 +27,7 @@ print("4th position to the end, s[:4]:\n{}".format(s[:4]))
 print("4th position to the end, but only every 2nd item s[4::2]:\n{}".format(s[4::2]))
 print("Last 2 rows s[-2:]:\n{}".format(s[-2:]))
 
+print("All rows apart from last 4 s[:-4]:\n{}".format(s[:-4]))
+print("Last 4 s[:-4]:\n{}".format(s[-4:]))
+print("The first three of the last four s[-4:-1]:\n{}".format(s[-4:-1]))
+print("s.tail(4).head(3) is equivalent to s[-4:-1]:\n{}".format(s.tail(4).head(3)))
