@@ -23,7 +23,7 @@ print("s[1:6]\nP{}".format(s[1:6]))
 print("s.iloc[[1,2,3,4,5]] equivalent to s[1:6]:\n{}".format(s[1:6]))
 
 print("First four, but only every 2nd item, s[:4:2]:\n{}".format(s[:4:2]))
-print("4th position to the end, s[:4]:\n{}".format(s[:4]))
+print("First four, s[:4]:\n{}".format(s[:4]))
 print("4th position to the end, but only every 2nd item s[4::2]:\n{}".format(s[4::2]))
 print("Last 2 rows s[-2:]:\n{}".format(s[-2:]))
 
