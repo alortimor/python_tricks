@@ -31,3 +31,21 @@ print("All rows apart from last 4 s[:-4]:\n{}".format(s[:-4]))
 print("Last 4 s[:-4]:\n{}".format(s[-4:]))
 print("The first three of the last four s[-4:-1]:\n{}".format(s[-4:-1]))
 print("s.tail(4).head(3) is equivalent to s[-4:-1]:\n{}".format(s.tail(4).head(3)))
+
+s=pd.Series(['x','y','z'],index=[0,1,2])
+print(s)
+
+# when using slicing, the result of the slice is a view into the original Series.
+# Modification of values through the result of the slice operation will modify the original Series.
+# for example
+
+a_slice=s[:2]
+print(a_slice)
+
+# The following assignment of a value to an element of a slice will change the value in the original Series
+a_slice[0] ='a'
+# hence when viewing the original, s, one can see the changed value
+print(s)
+"""
+  print(s) will result in 0 'a', 1 'y' , 2 'z'
+"""
