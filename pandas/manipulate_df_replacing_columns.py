@@ -27,3 +27,11 @@ print("type(rounded_price)): {}".format(type(rounded_price)))
 sp500_copy.Price = rounded_price.Price
 print(sp500_copy)
 
+# column contents can also be replacxed in-place using the .loc method
+# with a slice.
+# First, set back to the original
+sp500_copy = sp500.copy()
+# replace columns using a .loc slice
+sp500_copy.loc[:, 'Price']=rounded_price.Price
+print(sp500_copy[:5]) # show the first five rows to confirm contents was replaced
+
