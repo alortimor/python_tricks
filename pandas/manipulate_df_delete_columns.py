@@ -30,3 +30,30 @@ print("Before column popping:\n{}".format(sp500_copy[:2]))
 popped=sp500_copy.pop('Sector')
 print("After column popping:\n{}".format(sp500_copy[:2]))
 
+"""
+  The .drop method can be used to remove either columns or rows in-place or
+  out of place.
+  for example, view the first 5 rows and then remove 2 of them
+
+"""
+print(sp500_copy.index[[0,1]]) # this shows the key value for the first 2 rows
+print("Before dropping first 2 rows:\n{}".format(sp500_copy[:5]))
+sp500_copy.drop(sp500_copy.index[:2],inplace=True)
+print("After dropping first 2 rows:\n{}".format(sp500_copy[:5]))
+
+"""
+  another way od dropping the first 2 rows is:
+    sp500_copy.drop(sp500_copy.head(2).index,inplace=True)
+
+  Out of place removal can be performed using one of these techniques:
+  1. sp500_copy=sp500_copy.iloc[2:]
+  2. sp500_copy=sp500_copy.tail(-2) # -2 ensures first 2 rows, instead of last 2
+  3. sp500_copy.drop(sp500_copy.index[:2],inplace=False)
+
+"""
+
+# All of the previous .drop examples assume axis=0, which is the row.
+# iIf columns require removal, then specify axis=1, for example
+sp500_copy.drop(['Book Value'],axis=1,inplace=True)
+print(sp500_copy)
+
