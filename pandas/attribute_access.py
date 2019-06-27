@@ -37,3 +37,10 @@ print(panel['mean'])
  The recommended way to represent these types of 3-dimensional data are with a MultiIndex
  on a DataFrame, via the Panel.to_frame() method'
 """
+
+# Updating an attribute
+sa.a=5
+# or, for a DataFrame
+df['A']=list(range(len(df.index)))
+print(df)
+
