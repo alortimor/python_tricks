@@ -1,4 +1,4 @@
-#!/home/bluefrog/anaconda3/envs/ds_learn/bin/python3
+#!/usr/bin/python3
 import pandas as pd
 import numpy as np
 sp500=pd.read_csv("sp500.csv",index_col="Symbol",usecols=[0,2,3,7])
