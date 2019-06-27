@@ -44,3 +44,13 @@ sa.a=5
 df['A']=list(range(len(df.index)))
 print(df)
 
+# You can use a dictionary to create a DataFrame and then refer to "value" part of the 
+# using the key as an attribute, for example
+some_dict=pd.DataFrame({'a_key': [1,2,3]})
+print(some_dict.a_key)
+
+"""
+  However, Pandas does not allow a Series to be assigned into a non existing column,so the
+  following assignment will generate a warning.
+  df_dict.two=[4.,5.]
+"""
