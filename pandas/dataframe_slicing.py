@@ -34,7 +34,22 @@ print(df.loc['20190101':, ['A','C']]) # only outputs columns A and C
 # for example
 print(df.loc['20190101':, 'A':'C']) # outputs column A through to column C
 
-# output a selected number of rows, based on a list of the index literal values, for example
-print(df.loc[ ['20190101'], :])
+# output a selected number of rows, based on list of the index literal values, 
+# for example
+df1=pd.DataFrame(np.random.randn(6,4)
+                ,index=list('abcdef')
+                ,columns=list('ABCD'))
 
+print(df1)
+print(df1.loc[['a','b','d'], :]) # slicing using the literal index value with a list
+
+# one cannot specify a list of strings in the format 'yyyymmdd' ,
+# since these have to be converted explicitly to pandas datetime
+# for them to be used as an index lookup, for example
+# y = ['20190101', '20190104', '20190106'] ] this list cannot be supplied as an argument
+
+# but this list can be passed as an argument to a Datetime index
+x = [pd.to_datetime('20190101'),pd.to_datetime('20190104'),pd.to_datetime('20190106')]
+
+print(df.loc[x,:])
 
