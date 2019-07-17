@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import dis 
 # this is an example of a first class function
 def some_function(a,b,**kwargs):
     return (a*b)
